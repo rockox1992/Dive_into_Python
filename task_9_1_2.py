@@ -38,14 +38,16 @@ def gen_rand_csv():
 
 
 def read_csv():
-    list_csv = []
     with open('quadro.csv', 'r', newline='') as f:
         reader = csv.reader(f)
         for i in reader:
             a = i[0]
             b = i[1]
             c = i[2]
-            list_csv.append(i)
-        return list_csv
+            yield a, b, c
 
 
+def deco(func: Callable):
+    def wrapper(*args, **kwargs):
+        func(*read_csv())
+    return wrapper
