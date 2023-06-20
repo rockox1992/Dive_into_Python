@@ -8,8 +8,9 @@
 """
 from math import sqrt
 from task_9_1_2 import read_csv
+from task_9_1_2 import deco
 
-
+@deco
 def quadratic(*args):
     for ar in args:
         a = int(ar[0])
@@ -28,4 +29,5 @@ def quadratic(*args):
             return x_1, x_2
 
 
-print(quadratic(read_csv()))
+print(quadratic(()))
+
